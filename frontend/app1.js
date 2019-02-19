@@ -96,9 +96,11 @@ for(u of arrUsers){
 }
 
 //---------------
+const base_url = 'https://protected-scrubland-51244.herokuapp.com';
+// const base_url = 'http://localhost:3000';
 
 function fetchData(user){
-    fetch('http://localhost:3000/getData',{ 
+    fetch(base_url+'/getData',{ 
         method: "POST",
         headers: {
             "Content-Type": "application/json",
