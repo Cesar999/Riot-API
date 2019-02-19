@@ -33,7 +33,7 @@ body{
 
 .background_container{
     width: 100%;
-    height: 155vh;
+    height: 170vh;
     position: absolute;
     background-image:  url('./img/hero10.jpg');
     background-position: center;
