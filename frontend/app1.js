@@ -16,7 +16,7 @@ function setColors(a1,a2){
     map.set('Top','rgba(247, 0, 22, 0.9)');
     map.set('Jungle','rgba(72, 202, 82, 0.9)');
     map.set('Mid','rgba(50, 103, 248, 0.9)');
-    map.set('Adc','rgba(252, 227, 7, 0.9)');
+    map.set('Bot','rgba(252, 227, 7, 0.9)');
     map.set('Support','rgba(255, 180, 236, 0.9)');
     return [map.get(a1),map.get(a2)];
 }
@@ -38,6 +38,15 @@ function createCard(u){
     name.textContent = u.name;
     mainPos.textContent = u.mainPos;
     secPos.textContent = u.secPos;
+
+    const imgMainPos = clone.querySelector('.img_mainPos');
+    const tier = u.tier.substr(0,1)+u.tier.substr(1).toLowerCase();
+    console.log(`Position_${tier}-${u.mainPos}`);
+    imgMainPos.src = `./img/icons/Position_${tier}-${u.mainPos}.png`;
+
+    const imgSecPos = clone.querySelector('.img_secPos');
+    imgSecPos.src = `./img/icons/Position_${tier}-${u.secPos}.png`;
+
     champ1.textContent = u.champ1;
     champ2.textContent = u.champ2;
     champ3.textContent = u.champ3;
@@ -46,9 +55,13 @@ function createCard(u){
     const img2 = clone.querySelector('.img2');
     const img3 = clone.querySelector('.img3');
 
-    img1.src = `./img/${u.champ1}.png`;
-    img2.src = `./img/${u.champ2}.png`;
-    img3.src = `./img/${u.champ3}.png`;
+    // img1.src = `./img/${u.champ1}.png`;
+    // img2.src = `./img/${u.champ2}.png`;
+    // img3.src = `./img/${u.champ3}.png`;
+
+    img1.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ1}.png`;
+    img2.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ2}.png`;
+    img3.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ3}.png`;
 
     let c1, c2;
     [c1,c2]=setColors(u.mainPos,u.secPos);
@@ -69,7 +82,7 @@ const arrUsers = [
         name: "Heldu",
         id: "2",
         mainPos:"Mid",
-        secPos:"Adc",
+        secPos:"Bot",
     },
     { 
         name: "Astolin",
@@ -81,12 +94,12 @@ const arrUsers = [
         name: "Asraz",
         id: "4",
         mainPos:"Jungle",
-        secPos:"Adc",
+        secPos:"Bot",
     },
     { 
         name: "Viaan95",
         id: "5",
-        mainPos:"Adc",
+        mainPos:"Bot",
         secPos:"Support",
     }
 ];
@@ -100,6 +113,7 @@ for(u of arrUsers){
 function fetchData(user){
 const base_url = 'https://protected-scrubland-51244.herokuapp.com';
 //const base_url = 'http://localhost:3000';
+
     fetch(base_url+'/getData',{ 
         method: "POST",
         headers: {
@@ -108,10 +122,13 @@ const base_url = 'https://protected-scrubland-51244.herokuapp.com';
         body: JSON.stringify({name: user.name})})
     .then(res => res.json())
     .then(json => {
+        console.log(json);
         obj = {...user};
-        obj.champ1 = json[0];
-        obj.champ2 = json[1];
-        obj.champ3 = json[2];
+        obj.tier = json.tier;
+        obj.rank = json.rank
+        obj.champ1 = json.champs[0];
+        obj.champ2 = json.champs[1];
+        obj.champ3 = json.champs[2];
         createCard(obj);
     })
 }
