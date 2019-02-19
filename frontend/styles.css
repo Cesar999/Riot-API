@@ -1,0 +1,162 @@
+@font-face {
+    font-family: tradesmith;
+    src: url('./fonts/TradesmithRegular.otf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+   /* background-color: black; */
+   color: white;
+}
+
+
+.container{
+    min-width: 320px;
+    width: 90vw;
+    border: 4px solid transparent;
+    margin: 15px auto;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly; 
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: transparent;
+    perspective: 150rem;
+    /* background-image: linear-gradient(90deg, rgba(167, 24, 148, 0.5), rgba(148, 38, 143, 0.5)); */
+}
+
+.background_container{
+    width: 100%;
+    height: 155vh;
+    position: absolute;
+    background-image:  url('./img/hero10.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* <= This one */
+  }
+
+.card-container{
+    min-width: 280px;
+    font-family: 'tradesmith', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
+    /* font-family: 'Lato', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Arimo', sans-serif; */
+    width: 25%;
+    height: 460px;
+    position: relative;
+    margin: 2%;
+    backface-visibility: hidden;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    transition: all 1s;
+    border-radius: 12px;
+    border: 5px solid white;
+}
+
+.front{
+    /* background-image: linear-gradient(to right bottom, rgba(255, 116, 236, 0.8), rgba(247, 30, 22, 0.8)); */
+}
+
+.back{
+    /* background-image: linear-gradient(to right bottom, rgba(72, 202, 82, 0.8), rgba(252, 227, 7, 0.8)); */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow:hidden;
+}
+
+.card.front span{
+    display: block;
+    position: absolute;
+}
+
+.card.front .name{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 2.5rem;
+}
+
+.card.front .mainPos{
+    top: 5%;
+    left: 6%;
+}
+
+.card.front .secPos{
+    bottom: 5%;
+    right: 6%;
+}
+
+
+/*Back*/
+.card.back span, .card.back img{
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+}
+
+.card.back .champ1, .card.back .img1{
+    top: 5%;
+}
+
+.card.back .champ2, .card.back .img2{
+    top: 38%;
+}
+
+.card.back .champ3, .card.back .img3{
+    top: 69%;
+}
+
+.card.back img{
+    transform: translate(-50%) scale(0.9);
+    border-radius: 50%;
+    transition: all 1s;
+    opacity: 0.4;
+}
+
+.card.back img:hover{
+    /* transform-origin: left top; */
+    transform: translate(-50%) scale(1.2);
+    opacity: 1;
+}
+
+
+
+/* Rotate */
+.front{
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+
+.back{
+    transform: rotateY(180deg);
+    opacity: 0;
+}
+.rotate-front{
+    transform: rotateY(-180deg);
+    z-index: -1;
+    opacity: 0;
+}
+
+.rotate-back{
+    transform: rotateY(0deg);
+    z-index: 1;
+    opacity: 1;
+}
+
+
