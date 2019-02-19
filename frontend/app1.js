@@ -55,13 +55,13 @@ function createCard(u){
     const img2 = clone.querySelector('.img2');
     const img3 = clone.querySelector('.img3');
 
-    // img1.src = `./img/${u.champ1}.png`;
-    // img2.src = `./img/${u.champ2}.png`;
-    // img3.src = `./img/${u.champ3}.png`;
+    img1.src = `./img/lol/${u.champ1}.png`;
+    img2.src = `./img/lol/${u.champ2}.png`;
+    img3.src = `./img/lol/${u.champ3}.png`;
 
-    img1.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ1}.png`;
-    img2.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ2}.png`;
-    img3.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ3}.png`;
+    // img1.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ1}.png`;
+    // img2.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ2}.png`;
+    // img3.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ3}.png`;
 
     let c1, c2;
     [c1,c2]=setColors(u.mainPos,u.secPos);
