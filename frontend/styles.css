@@ -63,6 +63,7 @@ body{
     height: 460px;
     position: relative;
     margin: 2%;
+    backface-visibility: hidden;
 }
 
 .card{
@@ -75,12 +76,7 @@ body{
     backface-visibility: hidden;
 }
 
-.front{
-    /* background-image: linear-gradient(to right bottom, rgba(255, 116, 236, 0.8), rgba(247, 30, 22, 0.8)); */
-}
-
 .back{
-    /* background-image: linear-gradient(to right bottom, rgba(72, 202, 82, 0.8), rgba(252, 227, 7, 0.8)); */
     position: absolute;
     top: 0;
     left: 0;
@@ -136,7 +132,7 @@ body{
 }
 
 .card.back .champ2, .card.back .img2{
-    top: 38%;
+    top: 37%;
 }
 
 .card.back .champ3, .card.back .img3{
@@ -151,16 +147,13 @@ body{
 }
 
 .card.back img:hover{
-    /* transform-origin: left top; */
     transform: translate(-50%) scale(1.2);
     opacity: 1;
 }
 
-
-
 /* Rotate */
 .front{
-    transform: rotateY(0deg);
+    transform: rotateY(0.02deg);
 }
 
 .back{
@@ -172,7 +165,7 @@ body{
 }
 
 .rotate-back{
-    transform: rotateY(0deg);
+    transform: rotateY(0.02deg);
     z-index: 1;
 }
 
