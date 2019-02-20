@@ -41,7 +41,6 @@ function createCard(u){
 
     const imgMainPos = clone.querySelector('.img_mainPos');
     const tier = u.tier.substr(0,1)+u.tier.substr(1).toLowerCase();
-    console.log(`Position_${tier}-${u.mainPos}`);
     imgMainPos.src = `./img/icons/Position_${tier}-${u.mainPos}.png`;
 
     const imgSecPos = clone.querySelector('.img_secPos');
@@ -55,13 +54,16 @@ function createCard(u){
     const img2 = clone.querySelector('.img2');
     const img3 = clone.querySelector('.img3');
 
-    img1.src = `./img/lol/${u.champ1}.png`;
-    img2.src = `./img/lol/${u.champ2}.png`;
-    img3.src = `./img/lol/${u.champ3}.png`;
+    // img1.src = `./img/lol/${u.champ1}.png`;
+    // img2.src = `./img/lol/${u.champ2}.png`;
+    // img3.src = `./img/lol/${u.champ3}.png`;
 
-    // img1.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ1}.png`;
-    // img2.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ2}.png`;
-    // img3.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ3}.png`;
+    img1.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ1}.png`;
+    img1.alt = `u.champ1`;
+    img2.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ2}.png`;
+    img1.alt = `u.champ2`;
+    img3.src = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${u.champ3}.png`;
+    img1.alt = `u.champ3`;
 
     let c1, c2;
     [c1,c2]=setColors(u.mainPos,u.secPos);
@@ -111,8 +113,8 @@ for(u of arrUsers){
 //---------------
 
 function fetchData(user){
-const base_url = 'https://protected-scrubland-51244.herokuapp.com';
-//const base_url = 'http://localhost:3000';
+//const base_url = 'https://protected-scrubland-51244.herokuapp.com';
+const base_url = 'http://localhost:3000';
 
     fetch(base_url+'/getData',{ 
         method: "POST",
@@ -122,7 +124,6 @@ const base_url = 'https://protected-scrubland-51244.herokuapp.com';
         body: JSON.stringify({name: user.name})})
     .then(res => res.json())
     .then(json => {
-        console.log(json);
         obj = {...user};
         obj.tier = json.tier;
         obj.rank = json.rank
